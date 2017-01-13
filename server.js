@@ -19,8 +19,25 @@ var Language = require('./models/language');
 var Room = require('./models/room');
 var BookOrdering = require('./models/bookOrdering');
 var Messages = require('./models/messages');
-
 var Message = require('./models/message');
+
+var box = require('./models/box');
+var decipheringCodes = require('./models/decipheringCodes');
+var doctorDecoder = require('./models/doctorDecoder');
+var doctorTurning = require('./models/doctorTurning');
+var inspection = require('./models/inspection');
+var partPhoto = require('./models/partPhoto');
+var patient = require('./models/patient');
+var position = require('./models/position');
+var reason = require('./models/reason');
+var side = require('./models/side');
+var team = require('./models/team');
+
+
+
+
+
+
 
 var app = express();
 var cors = require('cors');
@@ -67,6 +84,18 @@ var bookOrderingRouter = require("./routes/bookOrderingRoutes")(BookOrdering);
 
 var messageRouter = require("./routes/messageRoutes")(Message);
 var messagesRouter = require("./routes/messagesRoutes")(Messages);
+
+var boxRouter = require("./routes/boxRoutes")(box);
+var decipheringCodesRouter = require("./routes/decipheringCodesRoutes")(decipheringCodes);
+var doctorDecoderRouter = require("./routes/doctorDecoderRoutes")(doctorDecoder);
+var doctorTurningRouter = require("./routes/doctorTurningRoutes")(doctorTurning);
+var inspectionRouter = require("./routes/inspectionRoutes")(inspection);
+var partPhotoRouter = require("./routes/partPhotoRoutes")(partPhoto);
+var patientRouter = require("./routes/patientRoutes")(patient);
+var positionRouter = require("./routes/positionRoutes")(position);
+var reasonRouter = require("./routes/reasonRoutes")(reason);
+var sideRouter = require("./routes/sideRoutes")(side);
+var teamRouter = require("./routes/teamRoutes")(team);
 
 //app.use(function(req, res, next){
 //    res.setHeader('Access-Control-Allow-Origin', '*');
@@ -141,6 +170,18 @@ app.use('/api/bookOrdering', bookOrderingRouter);
 app.use('/api/message', messageRouter);
 app.use('/api/messages', messagesRouter);
 
+
+app.use('/api/box', boxRouter);
+app.use('/api/decipheringCodes', decipheringCodesRouter);
+app.use('/api/doctorDecoder', doctorDecoderRouter);
+app.use('/api/doctorTurning', doctorTurningRouter);
+app.use('/api/inspection', inspectionRouter);
+app.use('/api/partPhoto', partPhotoRouter);
+app.use('/api/patient', patientRouter);
+app.use('/api/position', positionRouter);
+app.use('/api/reason', reasonRouter);
+app.use('/api/side', sideRouter);
+app.use('/api/team', teamRouter);
 
 //simple startit forward route
 app.get('/', function (req, res) {
